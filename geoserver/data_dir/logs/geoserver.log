@@ -1,0 +1,162 @@
+17 Jan 19:29:40 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+17 Jan 19:29:42 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+17 Jan 19:29:43 CONFIG [geoserver.config] - Loading catalog /opt/geoserver/data_dir
+17 Jan 19:29:43 CONFIG [config.datadir] - Catalog and configuration loader uses 8 threads out of 8 available cores.
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style polygon
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style dem
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style grass
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style point
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style pophatch
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style population
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style line
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style generic
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style restricted
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style simple_streams
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style burg
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style tiger_roads
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style rain
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style giant_polygon
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style raster
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style poly_landmarks
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style cite_lakes
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style capitals
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style green
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style simple_roads
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style poi
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded workspace nurc
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded workspace sf
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded workspace tiger
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded workspace sde
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded workspace topp
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded workspace cite
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded workspace it.geosolutions
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded namespace topp
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded namespace cite
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded namespace nurc
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded namespace tiger
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded namespace it.geosolutions
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded namespace sde
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded namespace sf
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded workspace ne
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage store mosaic
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage store img_sample2
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage store arcGridSample
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage store sfdem
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded namespace ne
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded data store sf
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded data store nyc
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded data store taz_shapes
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style populated_places
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style countries_mapcolor9
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style coastline
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style countries
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style disputed
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded style boundary_lines
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded data store NaturalEarth
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type populated_places, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage Arc_Sample, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer populated_places
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer Arc_Sample
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage store worldImageSample
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type coastlines, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer coastlines
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type boundary_lines, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer boundary_lines
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type disputed_areas, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer disputed_areas
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type countries, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer countries
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer group world
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type tasmania_state_boundaries, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage mosaic, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type poly_landmarks, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer tasmania_state_boundaries
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer mosaic
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded data store states_shapefile
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type tasmania_cities, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer poly_landmarks
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer tasmania_cities
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type tiger_roads, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type states, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer tiger_roads
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type tasmania_water_bodies, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type poi, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer states
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer tasmania_water_bodies
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer poi
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage Img_Sample, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer Img_Sample
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type giant_polygon, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type tasmania_roads, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer tasmania_roads
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer giant_polygon
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage Pk50095, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer Pk50095
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type roads, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type streams, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type restricted, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type archsites, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded coverage sfdem, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer roads
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer streams
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer restricted
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer archsites
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer sfdem
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded feature type bugsites, enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer bugsites
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer group tiger-ny
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer group tasmania
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded layer group spearfish
+17 Jan 19:29:43 INFO   [geoserver.config] - Read Catalog in 719.2 ms: workspaces: 8, namespaces: 8, styles: 27, stores: 10, resources: 24, layers: 24, layer groups: 4.
+17 Jan 19:29:43 CONFIG [config.datadir] - Loading GeoServer config...
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl--3ef31051:182c1e8b194:-8000', enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded service 'wms', enabled
+17 Jan 19:29:43 CONFIG [config.datadir] - Loaded service 'wcs', enabled
+17 Jan 19:29:44 CONFIG [config.datadir] - Loaded service 'wfs', enabled
+17 Jan 19:29:44 CONFIG [config.datadir] - Catalog and configuration loader uses 8 threads out of 8 available cores.
+17 Jan 19:29:44 CONFIG [config.datadir] - Loading workspace services and settings...
+17 Jan 19:29:44 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-1c443fee:182c0f3f209:-7f98', enabled
+17 Jan 19:29:44 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-1c443fee:182c0f3f209:-7f99', enabled
+17 Jan 19:29:44 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-1c443fee:182c0f3f209:-7f96', enabled
+17 Jan 19:29:44 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-1c443fee:182c0f3f209:-7f97', enabled
+17 Jan 19:29:44 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 72.96 ms
+17 Jan 19:29:44 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver/data_dir/gwc'.
+17 Jan 19:29:44 CONFIG [gwc.config] - Create configuration file 'gwc/geowebcache.xml' from template jar:file:/usr/local/tomcat/webapps/geoserver/WEB-INF/lib/gwc-core-1.28.0.jar!/geowebcache_empty.xml
+17 Jan 19:29:44 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+17 Jan 19:29:44 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+17 Jan 19:29:44 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+17 Jan 19:29:44 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+17 Jan 19:29:44 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+17 Jan 19:29:44 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+17 Jan 19:29:44 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+17 Jan 19:29:44 CONFIG [gwc.layer] - Loaded 0 tile layers in 1.138 ms
+17 Jan 19:29:44 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+17 Jan 19:29:44 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver/data_dir, using it as the default prefix.
+17 Jan 19:29:44 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+17 Jan 19:29:45 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+17 Jan 19:29:45 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+17 Jan 19:29:45 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+17 Jan 19:29:45 WARN   [codec.ImageEncoderImpl] - Preferred SPI not found, using the first available one: com.sun.imageio.plugins.tiff.TIFFImageWriterSpi
+17 Jan 19:29:45 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver/data_dir/gwc'.
+17 Jan 19:29:45 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver/data_dir/gwc'.
+17 Jan 19:29:45 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+17 Jan 19:29:45 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+17 Jan 19:29:45 INFO   [security.csp] - Creating csp.xml with the default configuration
+17 Jan 19:29:45 INFO   [security.csp] - Creating csp_default.xml with the default configuration
+17 Jan 19:29:48 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+17 Jan 19:29:48 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+17 Jan 19:29:48 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+17 Jan 19:29:48 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+17 Jan 19:29:48 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+17 Jan 19:29:48 CONFIG [diskquota.DiskQuotaMonitor] - 28 layers attached to global quota 500.0 MB
+17 Jan 19:29:48 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+17 Jan 19:29:48 INFO   [geoserver.security] - Strong cryptography is available
+17 Jan 19:29:49 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+17 Jan 19:29:49 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+17 Jan 19:29:49 CONFIG [platform.resource] - Notifying ENTRY_CREATE change on /opt/geoserver/data_dir/gwc-layers. Created: 28, removed: 0, modified: 0
+17 Jan 19:29:49 INFO   [geoserver.security] - Start encrypting configuration passwords using pbePasswordEncoder
+17 Jan 19:29:49 INFO   [geoserver.security] - End encrypting configuration passwords
+17 Jan 19:30:16 WARN   [geoserver.security] - Failed login, user admin from 172.17.0.1
+17 Jan 19:30:16 INFO   [geoserver.security] - Brute force attack prevention, delaying login for 2801ms
+17 Jan 19:30:19 WARN   [geoserver.security] - Failed login, user admin from 172.17.0.1
+17 Jan 19:30:19 INFO   [geoserver.security] - Brute force attack prevention, delaying login for 3127ms
