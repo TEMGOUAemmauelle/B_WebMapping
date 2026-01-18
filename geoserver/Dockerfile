@@ -26,18 +26,17 @@ RUN mkdir -p $GEOSERVER_DATA_DIR/security
 
 # Ajoute un script pour patcher csp.xml au démarrage
 RUN echo '#!/bin/bash\n\
-# Attends que csp.xml soit créé (boucle jusqu\'à 120s max)\n\
-TIMEOUT=120\n\
 CSP_FILE="$GEOSERVER_DATA_DIR/security/csp.xml"\n\
-for i in $(seq 1 $TIMEOUT); do\n\
-  if [ -f "$CSP_FILE" ]; then\n\
-    sed -i '\''s/form-action '\''self'\''/form-action '\''self'\'' https:\/\/b-webmapping.onrender.com/g'\'' $CSP_FILE\n\
-    echo "CSP patched for form-action at $(date)"\n\
-    exit 0\n\
-  fi\n\
+echo "Waiting for CSP file at $CSP_FILE..."\n\
+while [ ! -f "$CSP_FILE" ]; do\n\
   sleep 1\n\
+  ((counter++))\n\
+  if (( counter % 30 == 0 )); then\n\
+    echo "Still waiting after $counter seconds..."\n\
+  fi\n\
 done\n\
-echo "Timeout: CSP file not found after $TIMEOUT seconds"\n' > /patch_csp.sh && \
+sed -i '\''s/form-action '\''self'\''/form-action '\''self'\'' https:\/\/b-webmapping.onrender.com/g'\'' $CSP_FILE\n\
+echo "CSP patched for form-action at $(date)"\n' > /patch_csp.sh && \
 chmod +x /patch_csp.sh
 
 # Autres env vars (pour proxy, etc.)
