@@ -20,6 +20,10 @@ RUN wget -O /tmp/geoserver.zip https://sourceforge.net/projects/geoserver/files/
     mv /tmp/geoserver.war $CATALINA_HOME/webapps/geoserver.war && \
     rm -rf /tmp/geoserver*
 
+# Identifiants GeoServer (OBLIGATOIRE sur Render)
+ENV GEOSERVER_ADMIN_USER=admin
+ENV GEOSERVER_ADMIN_PASSWORD=caminobs
+
 # Force le data_dir et crée le dossier security
 ENV GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
 RUN mkdir -p $GEOSERVER_DATA_DIR/security
