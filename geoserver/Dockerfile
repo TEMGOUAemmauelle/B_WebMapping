@@ -1,17 +1,11 @@
-# Image officielle GeoServer
-FROM docker.osgeo.org/geoserver:2.28.0
+# Base sur Tomcat avec JDK
+FROM tomcat:9.0-jdk17
 
-# Variables admin GeoServer
-ENV GEOSERVER_ADMIN_USER=admin
-ENV GEOSERVER_ADMIN_PASSWORD=camino
+# Variables d'environnement pour Tomcat
+ENV CATALINA_HOME /usr/local/tomcat
+ENV PATH $PATH:$CATALINA_HOME/bin
 
-# Data directory
-ENV GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
-
-# Créer le data_dir
-RUN mkdir -p /opt/geoserver/data_dir
-
-# Exposer le port
+# Port exposé
 EXPOSE 8080
 
 # Démarrer Tomcat au premier plan (OBLIGATOIRE)
