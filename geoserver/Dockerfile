@@ -8,6 +8,33 @@ ENV PATH $PATH:$CATALINA_HOME/bin
 # Port exposé
 EXPOSE 8080
 
-# Démarrer Tomcat au premier plan (OBLIGATOIRE)
-CMD ["catalina.sh", "run"]
+# Installe wget et unzip (requis pour le téléchargement et extraction)
+RUN apt-get update && \
+    apt-get install -y wget unzip && \
+    rm -rf /var/lib/apt/lists/*
 
+# Télécharge et déploie GeoServer WAR
+ARG GEOSERVER_VERSION=2.25.0
+RUN wget -O /tmp/geoserver.zip https://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/geoserver-${GEOSERVER_VERSION}-war.zip/download && \
+    unzip /tmp/geoserver.zip geoserver.war -d /tmp && \
+    mv /tmp/geoserver.war $CATALINA_HOME/webapps/geoserver.war && \
+    rm -rf /tmp/geoserver*
+
+# Ajoute un script pour patcher csp.xml au démarrage (comme précédemment)
+RUN echo '#!/bin/bash\n\
+# Attends que GeoServer démarre et crée csp.xml\n\
+sleep 60  # Ajuste si besoin (temps pour démarrage)\n\
+CSP_FILE="/opt/geoserver/data_dir/security/csp.xml"\n\
+if [ -f "$CSP_FILE" ]; then\n\
+  sed -i '\''s/form-action '\''self'\''/form-action '\''self'\'' https:\/\/b-webmapping.onrender.com/g'\'' $CSP_FILE\n\
+  echo "CSP patched for form-action"\n\
+fi\n' > /patch_csp.sh && \
+chmod +x /patch_csp.sh
+
+# Autres env vars (pour proxy, etc.)
+ENV PROXY_BASE_URL=https://b-webmapping.onrender.com/geoserver
+ENV USE_X_FORWARDED_HEADERS=true
+ENV GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
+
+# Lance Tomcat, puis le script en background
+CMD ["catalina.sh", "run"] & /patch_csp.sh
