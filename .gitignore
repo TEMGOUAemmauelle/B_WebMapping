@@ -1,7 +1,6 @@
-# GeoServer generated files
-geoserver/data_dir/logs/
-geoserver/data_dir/gwc/
-geoserver/data_dir/gwc-layers/
+# GeoServer data (generated at runtime)
+geoserver/data_dir/
 
-# Docker
+
+# Docker volumes
 *.log
