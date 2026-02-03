@@ -1,0 +1,179 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{tcolorbox}
+
+% --- Palette de Couleurs ---
+\definecolor{NavyBlue}{RGB}{0, 51, 102}
+\definecolor{SoftGray}{RGB}{245, 245, 245}
+\definecolor{SlateGray}{RGB}{70, 80, 90}
+\definecolor{DarkGreen}{RGB}{34, 139, 34}
+
+% --- Configuration de la Page ---
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=25mm,
+    top=30mm,
+    bottom=30mm,
+}
+
+% --- En-têtes et Pieds de Page ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{SlateGray}{\textit{Architecture Technique : Système de Webmapping}}}
+\fancyhead[R]{\textcolor{SlateGray}{\thepage}}
+\fancyfoot[C]{\textcolor{gray}{\small Projet Webmapping SIG - \today}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{NavyBlue}\leaders\hrule height \headrulewidth\hfill}}
+
+% --- Styles des Titres ---
+\titleformat{\section}
+  {\color{NavyBlue}\normalfont\Large\bfseries}
+  {\thesection}{1em}{}[{\titlerule[0.8pt]}]
+
+\titleformat{\subsection}
+  {\color{SlateGray}\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+
+% --- Configuration Hyperef ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=NavyBlue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Rapport d'Architecture SIG},
+}
+
+% --- Page de Garde ---
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\Huge \bfseries \textcolor{NavyBlue}{Rapport d'Architecture Technique}}\\[0.5cm]
+    {\Large \textcolor{SlateGray}{Système de Webmapping SIG pour le Suivi Agricole}}\\[2cm]
+    
+    \includegraphics[width=0.4\textwidth]{architecture_diagram.png}\\[2cm]
+    
+    \vfill
+    {\large \bfseries Équipe de Développement}\\[0.2cm]
+    {\large \today}\\[1cm]
+\end{titlepage}
+
+\newpage
+
+% --- Résumé ---
+\begin{tcolorbox}[colback=SoftGray, colframe=NavyBlue, title=Résumé]
+Ce document présente l'architecture technique détaillée du projet de Webmapping. Il décrit l'intégration des différents serveurs (PostGIS, GeoServer), le rôle du frontend React/Leaflet, ainsi que la stratégie de conteneurisation via Docker. Une attention particulière est portée sur la justification des choix technologiques pour assurer la performance, la scalabilité et la sécurité du système.
+\end{tcolorbox}
+
+\tableofcontents
+\newpage
+
+% --- Introduction ---
+\section{Introduction}
+Le Cameroun compte des territoires aux vocations agricoles variées : de la culture intensive du cacao dans le Grand Sud à l'élevage bovin dominant dans l'Adamaoua. Le Webmapping permet de visualiser ces spécificités géographiques, facilitant ainsi les comparaisons inter-régionales et la prise de décisions stratégiques informées.
+
+L'objectif de ce projet est de mettre en œuvre un Système d'Information Géographique (SIG) web moderne. Notre architecture a été conçue selon une approche modulaire pour séparer strictement les responsabilités entre le stockage des données spatiales, le traitement métier et la présentation utilisateur.
+
+% --- Schéma Directeur ---
+\section{Schéma Directeur de l'Architecture}
+L'architecture suit un modèle client-serveur robuste. Elle est conçue pour être hautement scalable, sécurisée et pédagogique. Le fonctionnement global repose sur un flux de données descendant, partant de la base de données centrale vers l'interface de visualisation finale.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{architecture_diagram.png}
+    \caption{Diagramme de fonctionnement de l’architecture SIG (Couches Client, Service et Données)}
+    \label{fig:diagrame_complet}
+\end{figure}
+
+% --- Backend ---
+\section{Composantes du Backend}
+
+\subsection{Base de Données Spatiale : PostGIS}
+La couche de persistance des données spatiales est assurée par \textbf{PostGIS}, une extension avancée du système de gestion de base de données relationnelle PostgreSQL.
+
+PostGIS constitue le \textbf{standard de facto de l’écosystème open-source SIG}. Il offre des performances exceptionnelles grâce à l’utilisation \textbf{d’index spatiaux de type GiST} (Generalized Search Tree), permettant de manipuler efficacement des jeux de données contenant des millions de géométries complexes.
+
+\textbf{Fonctionnalités principales :}
+\begin{itemize}
+    \item Stockage et gestion optimisée des données vectorielles (points, lignes, polygones).
+    \item Exécution de requêtes spatiales complexes (intersection \texttt{ST\_Intersects}, buffers, jointures spatiales).
+    \item Compatibilité native avec les référentiels de coordonnées standards (EPSG).
+    \item Communication bidirectionnelle avec le serveur SIG pour la publication des couches.
+\end{itemize}
+
+\subsection{Serveur de Cartographie : GeoServer}
+\textbf{GeoServer} joue le rôle de pivot dans l’architecture backend. Il assure la transformation des données brutes en services web utilisables par les applications clientes.
+
+Il agit comme une \textbf{couche intermédiaire intelligente} en exposant les données selon les standards internationaux de l’Open Geospatial Consortium (OGC).
+
+\textbf{Fonctionnalités principales :}
+\begin{itemize}
+    \item \textbf{Web Map Service (WMS)} : Génération dynamique de tuiles cartographiques raster.
+    \item \textbf{Web Feature Service (WFS)} : Exposition des données géographiques vectorielles (GeoJSON).
+    \item \textbf{Moteur de Rendu} : Séparation du fond et de la forme via le langage \textbf{SLD} (Styled Layer Descriptor).
+    \item \textbf{Sécurité Applicative} : Gestion fine des droits d'accès par couche et par service.
+\end{itemize}
+
+\subsection{Reverse Proxy : Nginx}
+Un serveur \textbf{Nginx}, déployé dans un conteneur dédié, fait office de porte d'entrée unique (Reverse Proxy) devant GeoServer.
+
+\textbf{Responsabilités principales :}
+\begin{itemize}
+    \item Sécurisation des flux via la terminaison SSL/TLS (HTTPS).
+    \item Protection du moteur SIG en masquant l'architecture interne.
+    \item Optimisation des performances par la mise en cache et l'équilibrage de charge.
+\end{itemize}
+
+% --- Conteneurisation ---
+\section{Conteneurisation et Déploiement}
+Pour garantir la portabilité et la reproductibilité totale du système, l’ensemble du backend est \textbf{conteneurisé à l’aide de Docker}. Cette approche permet d’assurer un comportement rigoureusement identique entre les environnements de développement et de production.
+
+\subsection{Orchestration avec Docker Compose}
+Un fichier \texttt{docker-compose.yml} orchestre les services PostGIS, GeoServer et Nginx sur un réseau virtuel privé.
+
+\begin{itemize}
+    \item \textbf{Isolation} : Chaque service opère dans son propre environnement sans conflit de dépendances.
+    \item \textbf{Persistance} : Utilisation de volumes Docker externes pour garantir l'intégrité des bases de données lors des mises à jour.
+    \item \textbf{Agilité} : Déploiement et arrêt de l'infrastructure complète via une commande unique, optimisant le temps de maintenance.
+\end{itemize}
+
+% --- Justifications ---
+\section{Justifications des Choix Techniques}
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \rowcolors{2}{SoftGray}{white}
+    \begin{tabularx}{\textwidth}{@{}l l X@{}}
+        \specialrule{1.5pt}{0.5pt}{0.5pt} \rowcolor{NavyBlue}
+        \textcolor{white}{\textbf{Composant}} & \textcolor{white}{\textbf{Technologie}} & \textcolor{white}{\textbf{Justification Stratégique}} \\ \specialrule{1pt}{0.5pt}{0.5pt}
+        Base de données & PostGIS & Standard ouvert, puissance de traitement spatial SQL. \\
+        Cartographie & GeoServer & Rendu multi-format (WMS/WFS) et interopérabilité OGC. \\
+        Déploiement & Docker & Simplification radicale de l'installation et portabilité Cloud. \\
+        Style UI & Tailwind CSS & Flexibilité de design et rapidité d'itération frontend. \\ \specialrule{1.5pt}{0.5pt}{0.5pt}
+    \end{tabularx}
+    \caption{Synthèse des piliers technologiques du projet}
+\end{table}
+
+% --- Conclusion ---
+\section{Conclusion}
+L'architecture retenue combine la robustesse des standards SIG (OGC, PostGIS) et la modernité des outils de développement web (React, Docker). Cette structure garantit un système performant, sécurisé et prêt pour une exploitation en production à large échelle.
+
+\end{document}
