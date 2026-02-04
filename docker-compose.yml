@@ -20,7 +20,7 @@ services:
     environment:
       - GEOSERVER_ADMIN_USER=admin
       - GEOSERVER_ADMIN_PASSWORD=gates123
-      - PROXY_BASE_URL=http://your_vm_ip/geoserver
+      - PROXY_BASE_URL=https://c220g2-011025.wisc.cloudlab.us/geoserver
     volumes:
       - gsdata:/opt/geoserver_data
     networks:
@@ -36,17 +36,27 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - webroot:/var/www/certbot
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./nginx/html:/usr/share/nginx/html:ro
+
     depends_on:
       - geoserver
     networks:
       - gis-net
-
+      
 volumes:
   pgdata:
   gsdata:
+  certbot-etc:
+  certbot-var:
+  webroot:
+
 
 networks:
   gis-net:
     driver: bridge
+
