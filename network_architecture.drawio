@@ -1,0 +1,40 @@
+<mxfile host="65bd71144e">
+    <diagram id="network_diag" name="Architecture Reseau">
+        <mxGraphModel dx="786" dy="436" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="vm" value="Serveur Virtuel (VM CloudLab)" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=14;spacingTop=10;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="80" width="600" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="net" value="Docker Internal Network (gis-net)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;fontColor=#01579b;verticalAlign=bottom;dashed=1;spacingBottom=10;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="120" width="560" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="nginx" value="Conteneur NGINX&#xa;(Reverse Proxy / SSL)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="200" y="210" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="geoserver" value="Conteneur&#xa;GeoServer" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="360" y="210" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="postgis" value="Conteneur&#xa;PostGIS / DB" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="535" y="210" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="vol" value="Volumes Persistants&#xa;(pgdata, gsdata)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1f5fe;strokeColor=#01579b;" parent="1" vertex="1">
+                    <mxGeometry x="375" y="330" width="85" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="conn2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="nginx" target="geoserver" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="conn3" value="SQL / JDBC" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="geoserver" target="postgis" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="conn4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" parent="1" source="geoserver" target="vol" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="conn5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" parent="1" source="postgis" target="vol" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

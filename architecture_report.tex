@@ -1,105 +1,157 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 
-% --- Packages ---
+% --- Typography & Fonts ---
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
+\usepackage{charter} % Elegant and modern font
+\usepackage[scaled=0.92]{helvet}
+\usepackage{courier}
+\usepackage{setspace}
+\setstretch{1.15} % Better line spacing
+
+% --- Math and Symbols ---
 \usepackage{amsmath, amsfonts, amssymb}
+
+% --- Graphics and Layout ---
 \usepackage{graphicx}
 \usepackage{geometry}
-\usepackage{hyperref}
-\usepackage{booktabs}
-\usepackage{xcolor}
 \usepackage{float}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.5cm,
+    headheight=15pt
+}
+
+% --- Colors and Styling ---
+\usepackage{xcolor}
+\definecolor{MainBlue}{HTML}{003366}
+\definecolor{AccentBlue}{HTML}{0055AA}
+\definecolor{SlateGray}{HTML}{2D3E50}
+\definecolor{LightGray}{HTML}{F8F9FA}
+\definecolor{MintGreen}{HTML}{E8F5E9}
+\definecolor{BorderGray}{HTML}{E0E0E0}
+
+% --- Tables and Boxes ---
+\usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{colortbl}
 \usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
 
-% --- Palette de Couleurs ---
-\definecolor{NavyBlue}{RGB}{0, 51, 102}
-\definecolor{SoftGray}{RGB}{245, 245, 245}
-\definecolor{SlateGray}{RGB}{70, 80, 90}
-\definecolor{DarkGreen}{RGB}{34, 139, 34}
-
-% --- Configuration de la Page ---
-\geometry{
-    a4paper,
-    total={170mm,257mm},
-    left=25mm,
-    top=30mm,
-    bottom=30mm,
+% --- Hyperlinks ---
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=MainBlue,
+    citecolor=AccentBlue,
+    urlcolor=AccentBlue,
+    pdftitle={Rapport d'Architecture Technique - Webmapping},
+    pdfauthor={FOX Mapping Team}
 }
 
-% --- En-têtes et Pieds de Page ---
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\textcolor{SlateGray}{\textit{Architecture Technique : Système de Webmapping}}}
-\fancyhead[R]{\textcolor{SlateGray}{\thepage}}
-\fancyfoot[C]{\textcolor{gray}{\small Projet Webmapping SIG - \today}}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{\hbox to\headwidth{\color{NavyBlue}\leaders\hrule height \headrulewidth\hfill}}
-
-% --- Styles des Titres ---
+% --- Section Styles ---
 \titleformat{\section}
-  {\color{NavyBlue}\normalfont\Large\bfseries}
-  {\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  {\color{MainBlue}\normalfont\Large\bfseries}
+  {\thesection}{1em}{}[{\titlerule[1pt]}]
 
 \titleformat{\subsection}
   {\color{SlateGray}\normalfont\large\bfseries}
   {\thesubsection}{1em}{}
 
-% --- Configuration Hyperef ---
-\hypersetup{
-    colorlinks=true,
-    linkcolor=NavyBlue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    pdftitle={Rapport d'Architecture SIG},
-}
+% --- Header/Footer ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small \textcolor{SlateGray}{Architecture Technique : Système de Webmapping}}
+\fancyhead[R]{\small \textcolor{SlateGray}{\thepage}}
+\fancyfoot[C]{\footnotesize \textcolor{gray}{Projet Webmapping SIG - Rapport Technique}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{MainBlue}\leaders\hrule height \headrulewidth\hfill}}
 
 % --- Page de Garde ---
 \begin{document}
 
 \begin{titlepage}
     \centering
-    \vspace*{2cm}
-    {\Huge \bfseries \textcolor{NavyBlue}{Rapport d'Architecture Technique}}\\[0.5cm]
-    {\Large \textcolor{SlateGray}{Système de Webmapping SIG pour le Suivi Agricole}}\\[2cm]
+    \vspace*{1.5cm}
+    \includegraphics[width=0.25\textwidth]{architecture_diagram.png}\\[1cm]
     
-    \includegraphics[width=0.4\textwidth]{architecture_diagram.png}\\[2cm]
+    {\Huge \bfseries \textcolor{MainBlue}{Rapport d'Architecture Technique}}\\[0.8cm]
+    {\Large \textcolor{SlateGray}{Système de Webmapping SIG pour le Suivi Agricole}}\\[1.5cm]
+    
+    \begin{tcolorbox}[colback=LightGray, colframe=MainBlue, width=0.8\textwidth, arc=2mm, boxrule=1pt]
+        \centering
+        \large \bfseries \textcolor{MainBlue}{Étude des Bassins de Production du Cameroun}
+    \end{tcolorbox}
     
     \vfill
-    {\large \bfseries Équipe de Développement}\\[0.2cm]
-    {\large \today}\\[1cm]
+    
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushleft} \large
+            \textcolor{SlateGray}{\textbf{Équipe de Projet :}}\\
+            FOX Mapping Team\\
+            \small \textit{Janvier - Février 2026}
+        \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushright} \large
+            \textcolor{SlateGray}{\textbf{Statut :}}\\
+            Document de Référence\\
+            \small \textit{Version 1.2}
+        \end{flushright}
+    \end{minipage}
+
+    \vspace{2cm}
 \end{titlepage}
 
 \newpage
 
 % --- Résumé ---
-\begin{tcolorbox}[colback=SoftGray, colframe=NavyBlue, title=Résumé]
+\begin{tcolorbox}[colback=LightGray, colframe=MainBlue, title=Résumé, arc=0mm, fonttitle=\bfseries]
 Ce document présente l'architecture technique détaillée du projet de Webmapping. Il décrit l'intégration des différents serveurs (PostGIS, GeoServer), le rôle du frontend React/Leaflet, ainsi que la stratégie de conteneurisation via Docker. Une attention particulière est portée sur la justification des choix technologiques pour assurer la performance, la scalabilité et la sécurité du système.
 \end{tcolorbox}
 
 \tableofcontents
 \newpage
-
 % --- Introduction ---
 \section{Introduction}
-Le Cameroun compte des territoires aux vocations agricoles variées : de la culture intensive du cacao dans le Grand Sud à l'élevage bovin dominant dans l'Adamaoua. Le Webmapping permet de visualiser ces spécificités géographiques, facilitant ainsi les comparaisons inter-régionales et la prise de décisions stratégiques informées.
 
-L'objectif de ce projet est de mettre en œuvre un Système d'Information Géographique (SIG) web moderne. Notre architecture a été conçue selon une approche modulaire pour séparer strictement les responsabilités entre le stockage des données spatiales, le traitement métier et la présentation utilisateur.
+\noindent \textbf{Contexte} \\
+\indent Le Cameroun, souvent qualifié d'« Afrique en miniature » en raison de sa diversité agro-écologique, possède des bassins de production économique extrêmement variés. Des cultures de rente comme le cacao dans le Grand Sud aux vastes zones d’élevage bovin dans l'Adamaoua, chaque division administrative (10 régions, 58 départements) joue un rôle spécifique dans la sécurité alimentaire et l'économie nationale. La gestion efficace de ces ressources et la planification stratégique nécessitent une vision spatiale claire pour orienter les politiques de développement et optimiser l'exploitation des bassins de production.
 
+\vspace{1.5em}
+\noindent \textbf{Problématique} \\
+\indent Malgré la richesse des données statistiques collectées par les organismes publics tels que le MINADER, le MINEPIA ou l'INS, leur exploitation reste souvent limitée par l'absence d'outils de visualisation interactive. Il est complexe pour les décideurs, les étudiants et les acteurs économiques de localiser précisément les principaux pôles de production, d'analyser les dominances par filière ou de comparer les performances inter-départementales uniquement via des tableaux statiques. Le manque de corrélation dynamique entre les données socio-économiques et les référentiels géographiques freine la compréhension fine des dynamiques territoriales.
+
+\vspace{1.5em}
+\noindent \textbf{Objectifs} \\
+\indent L'objectif principal de ce projet est de concevoir et déployer une plateforme de Webmapping performante dédiée à la cartographie des bassins de production agricole, d'élevage et de pêche au Cameroun. Ce système vise à intégrer des données multi-thématiques dans une base de données spatiale PostGIS, de les diffuser via GeoServer selon les standards OGC (WMS/WFS), et de proposer une interface cartographique interactive intuitive basée sur React et Leaflet. La plateforme permettra de visualiser la production à différents niveaux administratifs, offrant ainsi un outil d'aide à la décision visuel et pédagogique.
+
+% --- Phases du Projet ---
+\section{Phases de Réalisation du Projet}
+La mise en œuvre de ce système de Webmapping s'est articulée autour de quatre phases critiques, garantissant la cohérence entre les données métier et leur représentation spatiale.
+
+\begin{enumerate}
+    \item \textbf{Définition des Bassins :} Identification des filières dominantes par secteur (Agriculture : cacao, maïs ; Élevage : bovins, volailles ; Pêche : zones littorales et continentales) et association aux divisions administratives correspondantes.
+    \item \textbf{Collecte et Structuration :} Acquisition des fonds de carte (Shapefiles des régions et départements) et des données de production, suivie de leur nettoyage pour assurer l'intégrité du système.
+    \item \textbf{Ingénierie des Données :} Mise en place de la base de données PostGIS, création des entités spatiales (polygones) et jointures avec les attributs de production.
+    \item \textbf{Développement Web-Mapping :} Configuration du serveur SIG (GeoServer) pour la publication des services et création de l'interface utilisateur interactive avec filtres dynamiques et légendes adaptatives.
+\end{enumerate}
 % --- Schéma Directeur ---
 \section{Schéma Directeur de l'Architecture}
 L'architecture suit un modèle client-serveur robuste. Elle est conçue pour être hautement scalable, sécurisée et pédagogique. Le fonctionnement global repose sur un flux de données descendant, partant de la base de données centrale vers l'interface de visualisation finale.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{architecture_diagram.png}
-    \caption{Diagramme de fonctionnement de l’architecture SIG (Couches Client, Service et Données)}
-    \label{fig:diagrame_complet}
+    \includegraphics[width=0.85\textwidth]{architecture_diagram.png}
+    \caption{Schéma Directeur : Flux de données entre les couches Client, Service et Données}
+    \label{fig:schema_directeur}
 \end{figure}
 
 % --- Backend ---
@@ -140,6 +192,12 @@ Un serveur \textbf{Nginx}, déployé dans un conteneur dédié, fait office de p
     \item Protection du moteur SIG en masquant l'architecture interne.
     \item Optimisation des performances par la mise en cache et l'équilibrage de charge.
 \end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{network_architecture.png}
+    \caption{Architecture Réseau : Segmentation des services par conteneurs Docker}
+    \label{fig:architecture_reseau}
+\end{figure}
 
 % --- Conteneurisation ---
 \section{Conteneurisation et Déploiement}
@@ -154,23 +212,167 @@ Un fichier \texttt{docker-compose.yml} orchestre les services PostGIS, GeoServer
     \item \textbf{Agilité} : Déploiement et arrêt de l'infrastructure complète via une commande unique, optimisant le temps de maintenance.
 \end{itemize}
 
-% --- Justifications ---
-\section{Justifications des Choix Techniques}
+% --- Configuration Détaillée ---
+\section{Configuration Détaillée de l'Infrastructure}
 
+Cette section détaille les configurations spécifiques appliquées à chaque composant pour assurer leur interaction fluide au sein de l'environnement conteneurisé.
+
+\subsection{Orchestration Globale (Docker Compose)}
+Le fichier \texttt{docker-compose.yml} est le cœur de l'orchestration. Il définit trois services interconnectés sur un réseau bridge dédié \texttt{gis-net}.
+
+\begin{tcolorbox}[colback=white, colframe=SlateGray, title=Extrait de la configuration Docker Compose]
+\begin{verbatim}
+services:
+  postgis:
+    image: postgis/postgis:16-3.4
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./postgis/init/:/docker-entrypoint-initdb.d # Scripts init
+    networks:
+      - gis-net
+
+  geoserver:
+    image: docker.osgeo.org/geoserver:2.28.0
+    environment:
+      - PROXY_BASE_URL=http://your_vm_ip/geoserver
+    depends_on:
+      - postgis
+    networks:
+      - gis-net
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    depends_on:
+      - geoserver
+    networks:
+      - gis-net
+\end{verbatim}
+\end{tcolorbox}
+
+\subsection{Configuration de PostGIS}
+L'initialisation de la base de données est automatisée. Au premier démarrage du conteneur, tous les scripts \texttt{.sql} et \texttt{.sh} présents dans le dossier \texttt{./postgis/init/} sont exécutés par ordre alphabétique.
+\begin{itemize}
+    \item \textbf{Schéma} : Les tables sont créées automatiquement avec les types spatiaux appropriés (\texttt{Geometry}, \texttt{SRID 4326}).
+    \item \textbf{Données} : L'importation massive des données agricoles et géographiques est réalisée via des commandes \texttt{COPY} optimisées.
+\end{itemize}
+
+\subsection{Configuration de GeoServer}
+GeoServer est configuré pour écouter derrière un proxy. La variable d'environnement \texttt{PROXY\_BASE\_URL} est critique : elle assure que les liens générés par GeoServer (notamment dans les documents \texttt{GetCapabilities}) pointent correctement vers l'adresse publique du serveur et non son adresse IP docker interne.
+
+\subsection{Configuration Nginx (Reverse Proxy)}
+Nginx agit comme une passerelle frontale. Sa configuration est minimale mais essentielle pour router le trafic vers GeoServer securiser.
+
+\begin{tcolorbox}[colback=white, colframe=SlateGray, title=Configuration Nginx (nginx.conf)]
+\begin{verbatim}
+server {
+    listen 443 ssl;
+    server_name c220g2-011025.wisc.cloudlab.us;
+
+    ssl_certificate /etc/letsencrypt/live/c220g2-011025.wisc.cloudlab.us/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/c220g2-011025.wisc.cloudlab.us/privkey.pem;
+
+    root /usr/share/nginx/html;
+
+    # Reverse proxy vers GeoServer
+    location /geoserver/ {
+        proxy_pass http://geoserver:8080/geoserver/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+
+        # CSP permissif pour Wicket/PostGIS
+        add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; form-action 'self' https://$host/geoserver;" always;
+    }
+
+    # Nginx static files (HTML pour test)
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+\end{verbatim}
+\end{tcolorbox}
+
+% --- Frontend ---
+\section{GEO-Front — Géoportail Cameroun}
+
+Interface cartographique de visualisation des données agricoles, d'élevage et de pêche au Cameroun.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{geofont.png}
+    \caption{Interface GEO-Front : Visualisation thématique et interactive (Mode Sombre)}
+    \label{fig:apercu_frontend}
+\end{figure}
+
+\subsection{Vue d'ensemble}
+\textbf{GEO-Front} est un géoportail web moderne permettant de visualiser et analyser les données de production agricole, d'élevage et de pêche du Cameroun. L'application offre deux modes de visualisation :
+
+\begin{enumerate}
+    \item \textbf{Vue Carte} : Analyse thématique choroplèthe sur fond de carte interactif.
+    \item \textbf{Vue Tabulaire} : Matrice pivot avec données croisées années/zones.
+\end{enumerate}
+
+\subsubsection*{Stack Technique}
+\begin{itemize}
+    \item \textbf{Frontend} : React 18 + TypeScript + Vite
+    \item \textbf{Cartographie} : React-Leaflet + Leaflet
+    \item \textbf{Styles} : Tailwind CSS 4.x (dark mode natif)
+    \item \textbf{Animations} : Framer Motion
+\end{itemize}
+
+\subsection{Données Disponibles}
+
+\subsubsection*{Matrice de Disponibilité}
 \begin{table}[H]
     \centering
-    \renewcommand{\arraystretch}{1.5}
-    \rowcolors{2}{SoftGray}{white}
-    \begin{tabularx}{\textwidth}{@{}l l X@{}}
-        \specialrule{1.5pt}{0.5pt}{0.5pt} \rowcolor{NavyBlue}
-        \textcolor{white}{\textbf{Composant}} & \textcolor{white}{\textbf{Technologie}} & \textcolor{white}{\textbf{Justification Stratégique}} \\ \specialrule{1pt}{0.5pt}{0.5pt}
-        Base de données & PostGIS & Standard ouvert, puissance de traitement spatial SQL. \\
-        Cartographie & GeoServer & Rendu multi-format (WMS/WFS) et interopérabilité OGC. \\
-        Déploiement & Docker & Simplification radicale de l'installation et portabilité Cloud. \\
-        Style UI & Tailwind CSS & Flexibilité de design et rapidité d'itération frontend. \\ \specialrule{1.5pt}{0.5pt}{0.5pt}
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+    \hline
+    \rowcolor{NavyBlue} \textcolor{white}{\textbf{Secteur}} & \textcolor{white}{\textbf{Granularité}} & \textcolor{white}{\textbf{Années}} & \textcolor{white}{\textbf{Source}} & \textcolor{white}{\textbf{État}} \\ \hline
+    \textbf{Agriculture} & Département & 1998 - 2022 & MINADER/DESA & Complet \\ \hline
+    \textbf{Élevage} & National & 2015 - 2021 & MINEPIA & Complet \\ \hline
+    \textbf{Élevage} & Régional & 2020 - 2021 & MINEPIA & Partiel \\ \hline
+    \textbf{Élevage} & Département & - & - & Indisponible \\ \hline
+    \textbf{Pêche} & National & 2021 & MINEPIA & Complet \\ \hline
+    \textbf{Pêche} & Régional (Infra.) & 2021 & MINEPIA & Complet \\ \hline
+    \textbf{Pêche} & Département & 2021 & MINEPIA & Complet \\ \hline
     \end{tabularx}
-    \caption{Synthèse des piliers technologiques du projet}
+    \caption{Disponibilité des données par secteur}
 \end{table}
+
+\subsubsection*{Filières Couvertes}
+\noindent \textbf{Agriculture (23 cultures) :} Maïs, Manioc, Cacao, Café, Banane Plantain, Sorgho, Riz, Haricot, Arachide, Igname, Patate douce, Pomme de terre, Coton, Hévéa, Palmier à huile, Agrumes, Tomate, Oignon, Ail, Piment, Gombo, Ananas, Avocat.
+
+\vspace{0.5em}
+\noindent \textbf{Élevage (5 espèces) :} Bovins, Ovins, Caprins, Porcins, Volailles.
+
+\vspace{0.5em}
+\noindent \textbf{Pêche (4 types + 6 infrastructures) :}
+\begin{itemize}
+    \item Types : Pêche Artisanale Maritime, Pêche Continentale, Pêche Industrielle, Pisciculture.
+    \item Infrastructures : Débarcadères, Halls de vente, Fumoirs, Étangs actifs, Cages, Bacs.
+\end{itemize}
+
+\subsection{Fonctionnalités Actuelles}
+\begin{itemize}
+    \item \textbf{Interface Générale} : Responsive mobile-first, Thème sombre "True Black", Animations fluides.
+    \item \textbf{Sidebar / Panneau de Contrôle} : Sélection du secteur, niveau administratif, et liste filtrée des filières.
+    \item \textbf{Vue Carte} : 5 fonds de carte, synchronisation thème, choroplèthe dynamique, panneau info au survol.
+    \item \textbf{Vue Tabulaire} : Pivot table, sélecteur de région, tendances visuelles.
+\end{itemize}
+
+\subsection{Fonctionnalités Planifiées}
+\begin{itemize}
+    \item \textbf{Carte} : Propagation niveau admin, couche limites seule, outils Leaflet (mesure, plein écran).
+    \item \textbf{Données} : Intégration GeoServer (WMS/WFS), API Backend.
+    \item \textbf{UX} : Export CSV, comparaison temporelle, tutoriel onboarding.
+\end{itemize}
+
+
 
 % --- Conclusion ---
 \section{Conclusion}
